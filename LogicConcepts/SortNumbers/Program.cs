@@ -1,18 +1,16 @@
-﻿using Shared;
-
-do
+﻿do
 {
     Console.WriteLine("Inserire tre numeri differenti...");
 
-    var a = ConsoleExtension.GetInt("Inserire il primo numero  : ");
-    var b = ConsoleExtension.GetInt("Inserire il secondo numero: ");
+    var a = GetInt("Inserire il primo numero  : ");
+    var b = GetInt("Inserire il secondo numero: ");
     if (a == b)
     {
         Console.WriteLine("Devono essere numeri diversi, inizia di nuovo...");
         continue;
     }
 
-    var c = ConsoleExtension.GetInt("Inserire il terzo numero  : ");
+    var c = GetInt("Inserire il terzo numero  : ");
     if (b == c || c == a)
     {
         Console.WriteLine("Devono essere numeri diversi, inizia di nuovo...");
@@ -53,3 +51,15 @@ do
         }
     }
 } while (true);
+
+static int GetInt(string message)
+{
+    Console.Write(message);
+    var numberString = Console.ReadLine();
+    var numberInt = 0;
+    if (int.TryParse(numberString, out numberInt))
+    {
+        return numberInt;
+    }
+    return 0;
+}
